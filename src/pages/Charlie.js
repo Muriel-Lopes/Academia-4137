@@ -1,20 +1,22 @@
-import React, { useState } from 'react';
-import {View, Text, StyleSheet,TouchableOpacity, ImageComponent, Table } from 'react-native';
+import React from 'react';
+import {View, Text, StyleSheet,TouchableOpacity,Button} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 
 import Icon from 'react-native-vector-icons/FontAwesome'
 Icon.loadFont();
 
-export function Charlie ({navigation},props){
-     
+export function Charlie (props,{navigation}){
+
+    const {resultado} = props.route.params;
     
+
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
 
         <LinearGradient
                 // Background Linear Gradient
-                colors={['#4876FF', '#3A5FCD', '#27408B']}
+                colors={['#1C86EE', '#3A5FCD', '#0000FF']}
                 style={{
                 position: 'absolute',
                 left: 0,
@@ -26,8 +28,9 @@ export function Charlie ({navigation},props){
           
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start', paddingTop: 30 }}>
           <Text style={{ fontSize:30,color:'#FFFAFA' ,fontWeight: 'bold', padding: 30}}>Calculadora de IMC </Text>
-          <Text style={styles.texto}>Resultado</Text>
-          
+          <Text style={styles.texto}> IMC: {resultado.toFixed(2)}</Text>
+
+            
           <View style={{ alignItems: 'center' , flexDirection: 'row'}}>
             <Text style={styles.box}>IMC (kg/m2)  </Text>
             <Text style={styles.box}>Classificação</Text>
@@ -53,23 +56,10 @@ export function Charlie ({navigation},props){
             <Text style={styles.box3}>Obesidade</Text>
           </View>
           
+
           
           </View>
-          <View style={{ alignItems: 'center' , flexDirection: 'row'}}>
-          <TouchableOpacity style={styles.ident1} 
-              onPress={() => navigation.navigate('Bravo')}>
-              <Icon name="arrow-circle-left" size={30} color="#000"></Icon>
-              <Text style={styles.texto}>Voltar </Text>
-          </TouchableOpacity> 
-
-          <TouchableOpacity style={styles.ident1} 
-              onPress={() => navigation.navigate('Alfa')}>
-              <Icon name="home" size={30} color="#000"></Icon>
-              <Text style={styles.texto}>Início </Text>
-          </TouchableOpacity>
-
-
-          </View>
+          
 
           <Text style={{ fontSize:12,fontWeight: 'bold', fontStyle: 'italic' }}>Created by: Muriel Lopes </Text>
             
@@ -132,6 +122,7 @@ const styles = StyleSheet.create({
     fontSize:20,
     fontWeight: 'bold',
     color:'#000000',
+    padding: 30,
   },
   box: {
     backgroundColor:'#CD919E',

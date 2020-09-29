@@ -4,9 +4,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 // Import de páginas
-import  {Alfa}  from '../pages/Alfa';
-import  {Bravo}  from '../pages/Bravo';
-import  {Charlie}  from '../pages/Charlie';
+import  {Alfa}  from './../pages/Alfa';
+import  {Bravo}  from './../pages/Bravo';
+import  {Charlie}  from './../pages/Charlie';
 
 const Stack = createStackNavigator();
 

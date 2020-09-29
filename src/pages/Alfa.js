@@ -7,18 +7,17 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 Icon.loadFont();
 
 
-export function Alfa ({navigation},props){
+export function Alfa ({navigation}){
 
     const [categoria, setCategoria] = React.useState();
 
     state = {categoria: 'CR'};
 
-      
+  
       return (
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <LinearGradient
-                // Background Linear Gradient
-                colors={['#4876FF', '#3A5FCD', '#27408B']}
+                colors={['#1C86EE', '#3A5FCD', '#0000FF']}
                 style={{
                   position: 'absolute',
                   left: 0,
@@ -27,20 +26,21 @@ export function Alfa ({navigation},props){
                   height: 612,
                 }}
               />
+              
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start', paddingTop: 30 }}>
             <Text style={{ fontSize:30,color:'#FFFAFA' ,fontWeight: 'bold', padding: 30}}>Calculadora de IMC </Text>
             <Text style={{ fontSize:20, justifyContent:'center', padding: 30}}>Selecione sua categoria{'\n'}     conforme a tabela:  </Text>
             <Text style={{ fontSize:20}}>2 até 18 : Criança{'\n'}19 até 60 : Adulto{'\n'}61 ou maior : Idoso</Text>
              
-            <Picker
+            <Picker style={styles.ident1}
                 selectedValue={categoria}
                 style={{height: 50, width: 150}}
                 onValueChange={(itemValue, itemIndex) =>
                   setCategoria(itemValue)
                 }>
-                <Picker.Item label="Criança" value="CR" />
-                <Picker.Item label="Adulto" value="AD" />
-                <Picker.Item label="Idoso" value="ID" />
+                <Picker.Item label="Criança" value="Criança" />
+                <Picker.Item label="Adulto" value="Adulto" />
+                <Picker.Item label="Idoso" value="Idoso" />
             </Picker>
 
             </View> 

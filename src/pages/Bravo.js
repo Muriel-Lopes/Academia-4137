@@ -1,35 +1,36 @@
 import React, { Component, useState } from 'react';
 import {View, Text, StyleSheet, TextInput,TouchableOpacity, Button} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import {Charlie} from './../pages/Charlie'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
 Icon.loadFont();
 
 
 
-export function Bravo ({navigation},props){
+export function Bravo ({ navigation }){
 
-  
     const [peso, setPeso] = useState(0.00);
     const [altura, setAltura] = useState(0.00);
     const [imc, setImc] = useState(0.00);
 
-    function calcularIMC (peso, altura) {
+
+    function calcularIMC (peso, altura,categoria) {
       var resultado = peso / (altura*altura)
       setImc(resultado)
+      console.log("valor IMC",resultado)
       if(resultado != 0){
-        navigation.navigate('Charlie' ,{imc})
-      }
-    }
+        navigation.navigate('Charlie',{resultado})
 
-    
+      } 
+    }
 
     return (
         
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <LinearGradient
                 // Background Linear Gradient
-                colors={['#4876FF', '#3A5FCD', '#27408B']}
+                colors={['#1C86EE', '#3A5FCD', '#0000FF']}
                 style={{
                   position: 'absolute',
                   left: 0,
@@ -38,7 +39,7 @@ export function Bravo ({navigation},props){
                   height: 612,
                 }}
               />
-          
+
           <Text style={{ fontSize:30,color:'#FFFAFA' ,fontWeight: 'bold', padding: 30}}>Calculadora de IMC </Text>
           
           <Text style={styles.texto}>Digite seu Peso em KG :</Text>
@@ -56,9 +57,8 @@ export function Bravo ({navigation},props){
           keyboardType={'numeric'}
           onChangeText={(val)=> setAltura(val)}
           ></TextInput>
-          <Text>
-            IMC: {imc.toFixed(2)}
-          </Text>
+
+          
 
         <View style={{ flex: 1, alignItems: 'center' , flexDirection: 'row', paddingTop: 170}}>
           <TouchableOpacity style={styles.ident1} 
@@ -68,7 +68,7 @@ export function Bravo ({navigation},props){
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.ident1} 
-              onPress={() => navigation.navigate('Charlie')}>
+              onPress={() => calcularIMC(peso,altura)}>
               <Icon name="calculator" size={30} color="#000"></Icon>
               <Text style={styles.texto}>Calcular </Text>
           </TouchableOpacity>
@@ -136,6 +136,3 @@ const styles = StyleSheet.create({
 });
 
 
-
-// <Button title="calcular" onPress={()=>calcularIMC(peso,altura)}> </Button>
-// calcular
